@@ -1,4 +1,6 @@
-/************************	Ex 1 - 21.07	************************/
+/***************************	Ex 1 - 21.07	***************************/
+
+//////	Objects :	//////
 
 function printObject (obj) {
 	for (let key in obj) {
@@ -35,7 +37,7 @@ me.addFamilyRelative(sister);
 //printObject(me);
 
 
-// Mobile phones part : 
+//////	CTORs, Closure :	//////
 
 // Function
 function CreateMobilePhone (brand, model, number, size, price) {
