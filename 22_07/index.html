@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="X-UA-Compatible"
+        content="ie=edge">
+    <title>Exercise 2 - 22/07</title>
+    <script src="index.js"></script>
+    <script src="person.js"></script>
+</head>
+
+<body>
+    <p>Create new person:</p>
+
+    <p>Name : <input type="text" id="nameTxt"></p>
+    <p>Age : <input type="number" id="age" min='16'></p>
+    <p>Password : <input type="password" id="pass"></p>
+
+    <input type="radio" name="gender" value="male" checked> Male<br>
+    <input type="radio" name="gender" value="female"> Female<br>
+
+    <br>
+
+    <select name="car">
+        <option value="volvo">Volvo</option>
+        <option value="Mitsubishi">Mitsubishi</option>
+        <option value="Honda">Honda</option>
+        <option value="Ford">Ford</option>
+    </select>
+
+    <br><br>
+
+    <input type="checkbox" name="bike" value="Bike"> I have a bike<br>
+
+    <br>
+
+    <input type="button" onclick="createPerson(byClass = true)" value="Create by Class">
+    <input type="button" onclick="createPerson(byClass = false)" value="Create by Function">
+</body>
+
+</html>
