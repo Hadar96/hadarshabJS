@@ -11,7 +11,7 @@ module.controller("calcCtrl", function ($rootScope, $scope) {
     $scope.calc = function (op) {
         if (op) $scope.op = op;
 
-        if (!$scope.arg1 || !$scope.arg2) {
+        if ($scope.arg1 == undefined || $scope.arg2 == undefined) {
             $scope.res = NaN
         }
         else {

@@ -6,12 +6,13 @@
     <script src="../../angular.js"></script>
     <script src="../../appModule.js"></script>
     <script src="calcCtrl.js"></script>
+    <link rel="stylesheet" type="text/css" href="calc.css">
 </head>
 
 <body style="background-color: aliceblue; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
     <div ng-controller="calcCtrl as mainCalc">
         <h1>Main Calc:</h1>
-        <div>
+        <div style="font-weight: bold">
             <input type="number" ng-model="arg1" ng-change="calc()">
             <span style="font-family: Arial, Helvetica, sans-serif">{{' ' + op + ' '}}</span>
             <input type="number" ng-model="arg2" ng-change="calc()">
