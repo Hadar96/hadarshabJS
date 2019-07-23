@@ -2,7 +2,7 @@ module.controller("calcCtrl", function ($rootScope, $scope) {
     $scope.res = $scope.arg1 = $scope.arg2 = 0;
     $scope.op = '+';
     $scope.resStyle = {
-        'color': 'green',
+        'color': 'seagreen',
         'font-size': '25px',
     }
 
@@ -37,9 +37,8 @@ module.controller("calcCtrl", function ($rootScope, $scope) {
             }
         }
 
-        $scope.resStyle.color = isNaN($scope.res) ? "red" : "green"
+        $scope.resStyle.color = isNaN($scope.res) ? "red" : "seagreen"
         this.res2 = $rootScope.rootRes = $scope.res;
     }.bind(this);
-
 })
 
