@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>Calculator</title>
+    <script src="../../angular.js"></script>
+    <script src="../../appModule.js"></script>
+    <script src="calcCtrl.js"></script>
+    <script src="watchNameCtrl.js"></script>
+    <script src="cellphoneCtrl.js"></script>
+    <!-- <script src="generalCtrl.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="calc.css">
+</head>
+
+<body style="background-color: aliceblue; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+    <div ng-controller="calcCtrl as mainCalc">
+        <h3>Main Calc:</h3>
+        <div style="font-weight: bold">
+            <input type="number" ng-model="arg1" ng-change="calc()">
+            <span style="font-family: Arial, Helvetica, sans-serif">{{' ' + op + ' '}}</span>
+            <input type="number" ng-model="arg2" ng-change="calc()">
+            {{' = '}}
+            <span ng-style="resStyle">{{res}}</span>
+        </div> <br>
+        <button ng-click="calc('+')" ng-model="op">+</button>
+        <button ng-click="calc('-')" ng-model="op">-</button>
+        <button ng-click="calc('x')" ng-model="op">x</button>
+        <button ng-click="calc('/')" ng-model="op">/</button>
+        <br>
+        <div ng-controller="calcCtrl">
+            <h3>Child Calc:</h3>
+            Parent result: {{mainCalc.res2}}
+        </div>
+    </div>
+    <br>
+    <div ng-controller="calcCtrl">
+        <h3>Brother Calc:</h3>
+        Main result: {{rootRes}}
+    </div>
+
+    <br>
+    <hr><br>
+
+    <div ng-controller="watchNameCtrl">
+        <h3>Watch My Name:</h3>
+        Enter any name:
+        <input type="text" ng-model="someName">
+        <span ng-show="someName !== ''">
+            <span style="color: seagreen" ng-show="isMyName"> This is my name!</span>
+            <span style="color: red" ng-show="!isMyName"> This is not my name...</span>
+        </span>
+    </div>
+
+    <br>
+    <hr><br>
+
+    <div ng-controller="cellphoneCtrl">
+        <table border="1" style="text-align: center">
+            <tr>
+                <th style="padding: 20px">#</th>
+                <th ng-click="setOrder('model')">Model</th>
+                <th ng-click="setOrder('color')">Color</th>
+                <th ng-click="setOrder('price')">Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr
+                ng-repeat="p in phones | filter: {'model': modelFilter, 'color': colorFilter, 'price': priceFilter} | orderBy: orderParam">
+                <td style="padding: 20px">{{$index}}</td>
+                <td>
+                    <span ng-show="editedRow !== $index">{{p.model}}</span>
+                    <span ng-show="editedRow === $index">
+                        <input type="text" ng-model="p.model" value={{p.model}}>
+                    </span>
+                </td>
+                <td style="background-color: {{p.color}}">
+                    <span ng-show="editedRow !== $index">{{p.color}}</span>
+                    <span ng-show="editedRow === $index">
+                        <input type="text" ng-model="p.color">
+                    </span>
+                </td>
+                <td>
+                    <span ng-show="editedRow !== $index">{{p.price}}</span>
+                    <span ng-show="editedRow === $index">
+                        <input type="number" ng-model="p.price">
+                    </span>
+                </td>
+                <td style="padding: 20px; ">
+                    <input type="button" ng-click="remove(p)" style="background-color: rgb(255, 156, 156);"
+                        value="Remove">
+                </td>
+                <td ng-show="editedRow !== $index" style="padding: 20px">
+                    <input type="button" ng-click="switchEditMode($index)" style="background-color: rgb(255, 229, 156);"
+                        value="Edit">
+                </td>
+                <td ng-show="editedRow === $index" style="padding: 20px;">
+                    <input type="button" ng-click="switchEditMode()" style="background-color: rgb(156, 255, 189);"
+                        value="Save">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="padding: 10px">
+                    <input type="text" ng-model="modelFilter">
+                </td>
+                <td style="padding: 10px">
+                    <input type="text" ng-model="colorFilter">
+                </td>
+                <td style="padding: 10px">
+                    <input type="number" ng-model="priceFilter" min="0">
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <p>Number of phones: {{phones.length}}</p>
+        <br>
+        <table>
+            <tr>
+                <td>Model:</td>
+                <td style="padding: 10px">
+                    <input type="text" ng-model="newModel" placeholder="Enter new model...">
+                </td>
+            </tr>
+            <tr>
+                <td>Color:</td>
+                <td style="padding: 10px">
+                    <input type="text" ng-model="newColor" placeholder="Enter new color...">
+                </td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td style="padding: 10px">
+                    <input type="number" ng-model="newPrice" placeholder="Enter new price...">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="button" ng-click="add(newModel, newColor, newPrice)"
+                        style="background-color: rgb(156, 207, 255);" value="Add">
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
