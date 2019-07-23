@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>Calculator</title>
+    <script src="../../angular.js"></script>
+    <script src="../../appModule.js"></script>
+    <script src="calcCtrl.js"></script>
+</head>
+
+<body style="background-color: aliceblue; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+    <div ng-controller="calcCtrl as mainCalc">
+        <h1>Calc 1:</h1>
+        <div>
+            <input type="number" ng-model="arg1" ng-change="calc()">
+            <span style="font-family: Arial, Helvetica, sans-serif">{{' ' + op + ' '}}</span>
+            <input type="number" ng-model="arg2" ng-change="calc()">
+            {{' = '}}
+            <span ng-style="resStyle">{{res}}</span>
+        </div> <br>
+        <button ng-click="calc('+')" ng-model="op">+</button>
+        <button ng-click="calc('-')" ng-model="op">-</button>
+        <button ng-click="calc('x')" ng-model="op">x</button>
+        <button ng-click="calc('/')" ng-model="op">/</button>
+
+        <br>
+
+        <div ng-controller="calcCtrl">
+            <h1>Calc 2:</h1>
+            Parent result: {{mainCalc.res2}}
+        </div>
+    </div>
+</body>
+
+</html>
