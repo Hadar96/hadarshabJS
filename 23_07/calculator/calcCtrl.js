@@ -1,39 +1,44 @@
-module.controller("calcCtrl", function ($scope) {
+module.controller("calcCtrl", function ($rootScope, $scope) {
     $scope.res = $scope.arg1 = $scope.arg2 = 0;
     $scope.op = '+';
-    $scope.resStyle = { 
+    $scope.resStyle = {
         'color': 'green',
         'font-size': '25px',
-     }
+    }
 
-    this.res2 = $scope.res;
+    this.res2 = $rootScope.rootRes = $scope.res;
 
     $scope.calc = function (op) {
         if (op) $scope.op = op;
 
-        switch ($scope.op) {
-            case '+':
-                $scope.res = $scope.arg1 + $scope.arg2;
-                break;
-            case '-':
-                $scope.res = $scope.arg1 - $scope.arg2;
-                break;
-            case 'x':
-                $scope.res = $scope.arg1 * $scope.arg2;
-                break;
-            case '/':
-                if ($scope.arg2 == 0)
+        if (!$scope.arg1 || !$scope.arg2) {
+            $scope.res = NaN
+        }
+        else {
+            switch ($scope.op) {
+                case '+':
+                    $scope.res = $scope.arg1 + $scope.arg2;
+                    break;
+                case '-':
+                    $scope.res = $scope.arg1 - $scope.arg2;
+                    break;
+                case 'x':
+                    $scope.res = $scope.arg1 * $scope.arg2;
+                    break;
+                case '/':
+                    if ($scope.arg2 == 0)
+                        $scope.res = NaN;
+                    else
+                        $scope.res = $scope.arg1 / $scope.arg2;
+                    break;
+                default:
                     $scope.res = NaN;
-                else
-                    $scope.res = $scope.arg1 / $scope.arg2;
-                break;
-            default:
-                $scope.res = NaN;
-                break;
+                    break;
+            }
         }
 
         $scope.resStyle.color = isNaN($scope.res) ? "red" : "green"
-        this.res2 = $scope.res;
+        this.res2 = $rootScope.rootRes = $scope.res;
     }.bind(this);
 
 })
