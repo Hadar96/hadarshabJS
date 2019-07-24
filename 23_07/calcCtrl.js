@@ -1,4 +1,4 @@
-module.controller("calcCtrl", function ($rootScope, $scope) {
+app.controller("calcCtrl", function ($rootScope, $scope) {
     $scope.res = $scope.arg1 = $scope.arg2 = 0;
     $scope.op = '+';
     $scope.resStyle = {

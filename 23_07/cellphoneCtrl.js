@@ -1,4 +1,4 @@
-module.controller("cellphoneCtrl", function ($scope) {
+app.controller("cellphoneCtrl", function ($scope) {
     $scope.phones = [
         new Phone("IPhone X", "white", 3500),
         new Phone("Xiaomi", "lightgreen", 1000),

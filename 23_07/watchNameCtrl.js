@@ -1,4 +1,4 @@
-module.controller("watchNameCtrl", function ($scope) {
+app.controller("watchNameCtrl", function ($scope) {
     const MY_NAME = 'HADAR';
 
     $scope.someName = '';

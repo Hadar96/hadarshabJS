@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myTimerApp">
+
+<head>
+    <title>Clock!</title>
+    <script src="../angular.js"></script>
+    <script src="clockModule.js"></script>
+    <script src="clockCtrl.js"></script>
+</head>
+
+<body>
+    <div ng-controller="timeCtrl">
+        <h1>Clock</h1>
+        <h1>{{stime}}</h1>
+        <button ng-click="increaseTime()">Click to increase time</button>
+    </div>
+    <br>
+    <div ng-controller="timeCtrl as t">
+        <h1>Clock</h1>
+        <h1>from scope: {{stime}}</h1>
+        <h1>from this: {{t.ttime}}</h1>
+        <button ng-click="increaseTime()">Click to increase time</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>Ex4 - 24/07</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="../angular.js"></script>
+    <script src="../appModule.js"></script>
+    <script src="verifyCtrl.js"></script>
+</head>
+
+<body style="background-color: floralwhite; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+    <div ng-controller="verifyCtrl">
+        <h2>Enter your details:</h2>
+        <table ng-class="getVerifyStatus()">
+            <tr>
+                <td>Name:</td>
+                <td style="padding: 10px">
+                    <input type="text" ng-model="name" ng-class="getVerifyStatus()">
+                </td>
+            </tr>
+            <tr>
+                <td>eMail:</td>
+                <td style="padding: 10px">
+                    <input type="text" ng-model="email" ng-class="getVerifyStatus()">
+                </td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td style="padding: 10px">
+                    <input type="number" ng-model="age" min=0 ng-class="getVerifyStatus()">
+                </td>
+            </tr>
+        </table>
+        <p ng-class="verficationClass" ng-show="verficationClass == 'missing' || verficationClass == 'empty'">Please
+            fill all of the field .</p>
+        <p ng-class="verficationClass" ng-show="verficationClass == 'minor'">Notice! You are minor .</p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="dataApp">
+
+<head>
+    <title>Person's Name</title>
+    <script src="../angular.js"></script>
+    <script src="nameCtrl.js"></script>
+</head>
+
+<body>
+    <div ng-controller="formCtrl">
+        <h1>Name</h1>
+        <input type="text" ng-model="person.name" placeholder="Enter your name" />
+        <br>
+        <button ng-click="resetName()">Reset</button>
+        <h1>Name = {{person.name}}</h1>
+        <pr>Person = {{person | json}}</pr>
+    </div>
+    <br>
+</body>
+
+</html>

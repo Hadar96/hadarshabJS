@@ -1,2 +1,2 @@
 // bootstrap the application
-const module = angular.module("myApp", [])
+const app = angular.module("myApp", [])
