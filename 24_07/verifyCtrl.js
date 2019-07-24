@@ -1,4 +1,4 @@
-app.controller("verifyCtrl", function ($scope) {
+module.controller("verifyCtrl", function ($scope) {
     $scope.verficationClass;
     $scope.email = $scope.name = $scope.age = '';
 

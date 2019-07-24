@@ -5,8 +5,21 @@
     <title>Ex4 - 24/07</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="../angular.js"></script>
-    <script src="../appModule.js"></script>
+    <script src="tempModule1.js"></script>
+    <script src="tempModule2.js"></script>
+    <script src="appModule.js"></script>
     <script src="verifyCtrl.js"></script>
+    <script src="servicesEx/inputCtrl.js"></script>
+    <script src="servicesEx/aCtrl.js"></script>
+    <script src="servicesEx/bCtrl.js"></script>
+    <script src="servicesEx/sumCtrl.js"></script>
+    <script src="servicesEx/divCtrl.js"></script>
+    <script src="servicesEx/historyCtrl.js"></script>
+    <script src="servicesEx/historyService.js"></script>
+    <script src="servicesEx/inputService.js"></script>
+    <script src="servicesEx/msgService.js"></script>
+    <script src="servicesEx/oneToAFactory.js"></script>
+    <script src="servicesEx/oneToBService.js"></script>
 </head>
 
 <body style="background-color: floralwhite; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
@@ -32,11 +45,48 @@
                 </td>
             </tr>
         </table>
-        <p ng-class="verficationClass" ng-show="verficationClass == 'missing' || verficationClass == 'empty'">Please
-            fill all of the field .</p>
+        <p ng-class="verficationClass" ng-show="verficationClass == 'missing' || verficationClass == 'empty'">
+            Please fill all of the field .</p>
         <p ng-class="verficationClass" ng-show="verficationClass == 'minor'">Notice! You are minor .</p>
     </div>
 
+    <br>
+    <hr><br>
+
+    <h3>Different Modules:</h3>
+    <p ng-controller="tempCtrl1" ng-style='style'>{{msg}}</p>
+    <p ng-controller="tempCtrl2" ng-style='style'>{{msg}}</p>
+
+    <br>
+    <hr><br>
+
+    <h3>Services:</h3>
+    <div ng-controller="inputCtrl">
+        Enter number A: <input type="number" ng-model="input.a" ng-change="setInput()"> <br>
+        Enter number B: <input type="number" ng-model="input.b" ng-change="setInput()"> <br>
+
+        <input type="radio" name="color" ng-click="setColors({'pos':'green','neg':'orange'})"> Green / Orange<br>
+        <input type="radio" name="color" ng-click="setColors({'pos':'blue','neg':'red'})"> Blue / Red<br>
+    </div>
+    <div ng-controller="sumCtrl">
+        <p ng-style="{'color': (input.a + input.b) > 0 ? input.pos : input.neg}">The sum is {{input.a + input.b}} !</p>
+    </div>
+    <div ng-controller="divCtrl">
+        <p>The div is {{input.a / input.b}} !</p>
+    </div>
+    <div ng-controller="aCtrl">
+        <input type="button" ng-click="genList()" value="1 to A">
+        A List: {{list}}
+    </div> <br>
+    <div ng-controller="bCtrl">
+        <input type="button" ng-click="genList()" value="1 to B"> 
+        B List: {{list}} 
+    </div> <br>
+    <div ng-controller="historyCtrl">
+        <input type="button" ng-click="getLists()" value="History"> <br>
+        A history: {{listA}} <br>
+        B history: {{listB}} 
+    </div>
 </body>
 
 </html>

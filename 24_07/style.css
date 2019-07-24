@@ -1,23 +1,24 @@
-input[type="text"], input[type="number"] {
+input[type="text"],
+input[type="number"] {
     border-radius: 5px;
 }
 
 .ok {
-    color : seagreen;
-    border-color : seagreen;
+    color: seagreen;
+    border-color: seagreen;
 }
 
 .missing {
-    color : orange;
-    border-color : orange;
+    color: orange;
+    border-color: orange;
 }
 
 .empty {
-    color : red;
-    border-color : red;
+    color: red;
+    border-color: red;
 }
 
 .minor {
-    color : blue;
-    border-color : blue;
+    color: blue;
+    border-color: blue;
 }
