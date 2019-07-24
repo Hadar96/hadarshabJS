@@ -19,7 +19,25 @@ module.controller("cellphoneCtrl", function ($scope) {
         }
     }
 
-    $scope.switchEditMode = function (id = -1) {
+    $scope.save = function (id, model, color, price) {
+        if (model && model.trim() !== '')
+            $scope.phones[id].model = model;
+
+        if (color && color.trim() !== '')
+            $scope.phones[id].color = color;
+
+        if (price && price !== '' && price > 0)
+            $scope.phones[id].price = price;
+
+        $scope.editModel = $scope.editColor = $scope.editPrice = undefined;
+        $scope.editedRow = -1;
+    }
+
+    $scope.turnEditModeOn = function (id) {
+        $scope.editModel = $scope.phones[id].model;
+        $scope.editColor = $scope.phones[id].color;
+        $scope.editPrice = $scope.phones[id].price;
+
         $scope.editedRow = id;
     }
 
@@ -30,7 +48,6 @@ module.controller("cellphoneCtrl", function ($scope) {
         else {
             $scope.orderParam = param;
         }
-        console.log($scope.orderParam);
     }
 });
 

@@ -3,12 +3,11 @@
 
 <head>
     <title>Ex 3 - 23/07</title>
-    <script src="../../angular.js"></script>
-    <script src="../../appModule.js"></script>
+    <script src="../angular.js"></script>
+    <script src="../appModule.js"></script>
     <script src="calcCtrl.js"></script>
     <script src="watchNameCtrl.js"></script>
     <script src="cellphoneCtrl.js"></script>
-    <!-- <script src="generalCtrl.js"></script> -->
     <link rel="stylesheet" type="text/css" href="calc.css">
 </head>
 
@@ -57,7 +56,7 @@
     <div ng-controller="cellphoneCtrl">
         <table border="1" style="text-align: center">
             <tr>
-                <th style="padding: 20px">#</th>
+                <th ng-click="setOrder('')" style="padding: 20px">#</th>
                 <th ng-click="setOrder('model')">Model</th>
                 <th ng-click="setOrder('color')">Color</th>
                 <th ng-click="setOrder('price')">Price</th>
@@ -66,35 +65,36 @@
             </tr>
             <tr
                 ng-repeat="p in phones | filter: {'model': modelFilter, 'color': colorFilter, 'price': priceFilter} | orderBy: orderParam">
-                <td style="padding: 20px">{{$index}}</td>
+                <td style="padding: 20px">{{phones.indexOf(p)}}</td>
+                <!-- <td style="padding: 20px">{{$index}}</td> -->
                 <td>
-                    <span ng-show="editedRow !== $index">{{p.model}}</span>
-                    <span ng-show="editedRow === $index">
-                        <input type="text" ng-model="p.model" value={{p.model}}>
+                    <span ng-show="editedRow !== phones.indexOf(p)">{{p.model}}</span>
+                    <span ng-show="editedRow === phones.indexOf(p)">
+                        <input type="text" ng-model="editModel">
                     </span>
                 </td>
                 <td style="background-color: {{p.color}}">
-                    <span ng-show="editedRow !== $index">{{p.color}}</span>
-                    <span ng-show="editedRow === $index">
-                        <input type="text" ng-model="p.color">
+                    <span ng-show="editedRow !== phones.indexOf(p)">{{p.color}}</span>
+                    <span ng-show="editedRow === phones.indexOf(p)">
+                        <input type="text" ng-model="editColor">
                     </span>
                 </td>
                 <td>
-                    <span ng-show="editedRow !== $index">{{p.price}}</span>
-                    <span ng-show="editedRow === $index">
-                        <input type="number" ng-model="p.price">
+                    <span ng-show="editedRow !== phones.indexOf(p)">{{p.price}}</span>
+                    <span ng-show="editedRow === phones.indexOf(p)">
+                        <input type="number" ng-model="editPrice">
                     </span>
                 </td>
                 <td style="padding: 20px; ">
                     <input type="button" ng-click="remove(p)" style="background-color: rgb(255, 156, 156);"
                         value="Remove">
                 </td>
-                <td ng-show="editedRow !== $index" style="padding: 20px">
-                    <input type="button" ng-click="switchEditMode($index)" style="background-color: rgb(255, 229, 156);"
+                <td ng-show="editedRow !== phones.indexOf(p)" style="padding: 20px">
+                    <input type="button" ng-click="turnEditModeOn(phones.indexOf(p))" style="background-color: rgb(255, 229, 156);"
                         value="Edit">
                 </td>
-                <td ng-show="editedRow === $index" style="padding: 20px;">
-                    <input type="button" ng-click="switchEditMode()" style="background-color: rgb(156, 255, 189);"
+                <td ng-show="editedRow === phones.indexOf(p)" style="padding: 20px;">
+                    <input type="button" ng-click="save(phones.indexOf(p), editModel, editColor, editPrice)" style="background-color: rgb(156, 255, 189);"
                         value="Save">
                 </td>
             </tr>
@@ -113,7 +113,7 @@
                 <td></td>
             </tr>
         </table>
-        <p>Number of phones: {{phones.length}}</p>
+        <h4>Number of phones: {{phones.length}}</h4>
         <br>
         <table>
             <tr>
