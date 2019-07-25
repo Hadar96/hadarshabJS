@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="finalApp">
+
+<head>
+    <title>Memory Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="angular.js"></script>
+    <script src="appModule.js"></script>
+    <script src="triesCtrl.js"></script>
+    <script src="gameCtrl.js"></script>
+    <script src="gameService.js"></script>
+</head>
+
+<body style="background-color: aliceblue; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+    <div ng-controller="gameCtrl">
+        <table style="text-align: center">
+            <tr ng-repeat="row in cards">
+                <td>
+                    <button ng-class="c.hidden ? '':'shown'" class="gameboard" ng-repeat="c in row"
+                        ng-click="clickCard(c)" ng-disabled="!c.hidden || dontClick">
+                        <span ng-show="!c.hidden">{{c.value}}</span>
+                        <span ng-show="c.hidden">X</span>
+                    </button>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td><input type="button" value="Play Again!" ng-click="replay(size)"></td>
+                <td class="size">Size:</td>
+                <td><input class="size" type="number" ng-model="size"></td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+
+    <div ng-controller="triesCtrl">
+        <table style="font-size: 20px">
+            <tr>
+                <td>Number of Games:</td>
+                <td style="padding-left: 30px">{{serv.games}}</td>
+            </tr>
+            <tr>
+                <td>Number of Guesses:</td>
+                <td style="padding-left: 30px">{{serv.tries}}</td>
+            </tr>
+            <tr style="color: green">
+                <td>Number of Correct Guesses:</td>
+                <td style="padding-left: 30px">{{serv.corrects}}</td>
+            </tr>
+            <tr style="color: red">
+                <td>Number of Wrong Guesses:</td>
+                <td style="padding-left: 30px">{{serv.tries - serv.corrects}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
