@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>Ex5 - 25/07</title>
+    <script src="../angular.js"></script>
+    <script src="../appModule.js"></script>
+    <script src="promiseCtrl.js"></script>
+    <script src="todos.service.js"></script>
+</head>
+
+<body>
+    <div ng-controller="promiseCtrl" ng-init="dataId=0">
+        <input type="number" ng-model="dataId"> &nbsp;
+        <input type="button" ng-click="getDataById(dataId)" value="Get Specific"> <br>
+        <textarea style="height: 200px; width: 400px;">{{dataOfId}}{{err}}</textarea>
+
+        <br><br>
+        <button ng-click="getData()">Get Data</button>
+        <table border="1" style="text-align: center">
+            <tr>
+                <th style="padding: 10px">ID</th>
+                <th style="padding: 10px">Title</th>
+                <th style="padding: 10px">URL</th>
+                <th style="padding: 10px">Thumb</th>
+            </tr>
+            <tr ng-repeat="t in data | orderBy: '-id'">
+                <td style="padding: 10px">{{t.id}}</td>
+                <td>{{t.title}}</td>
+                <td>{{t.url}}</td>
+                <td><img src='{{t.thumbnailUrl}}' height="50px" width="50px"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
