@@ -76,7 +76,7 @@
                 <td style="background-color: {{p.color}}">
                     <span ng-show="editedRow !== phones.indexOf(p)">{{p.color}}</span>
                     <span ng-show="editedRow === phones.indexOf(p)">
-                        <input type="text" ng-model="editColor">
+                        <input type="color" ng-model="editColor">
                     </span>
                 </td>
                 <td>
@@ -90,12 +90,12 @@
                         value="Remove">
                 </td>
                 <td ng-show="editedRow !== phones.indexOf(p)" style="padding: 20px">
-                    <input type="button" ng-click="turnEditModeOn(phones.indexOf(p))" style="background-color: rgb(255, 229, 156);"
-                        value="Edit">
+                    <input type="button" ng-click="turnEditModeOn(phones.indexOf(p))"
+                        style="background-color: rgb(255, 229, 156);" value="Edit">
                 </td>
                 <td ng-show="editedRow === phones.indexOf(p)" style="padding: 20px;">
-                    <input type="button" ng-click="save(phones.indexOf(p), editModel, editColor, editPrice)" style="background-color: rgb(156, 255, 189);"
-                        value="Save">
+                    <input type="button" ng-click="save(phones.indexOf(p), editModel, editColor, editPrice)"
+                        style="background-color: rgb(156, 255, 189);" value="Save">
                 </td>
             </tr>
             <tr>
@@ -123,15 +123,16 @@
                 </td>
             </tr>
             <tr>
-                <td>Color:</td>
-                <td style="padding: 10px">
-                    <input type="text" ng-model="newColor" placeholder="Enter new color...">
-                </td>
-            </tr>
-            <tr>
                 <td>Price:</td>
                 <td style="padding: 10px">
                     <input type="number" ng-model="newPrice" placeholder="Enter new price...">
+                </td>
+            </tr>
+            <tr>
+                <td>Color:</td>
+                <td style="padding: 10px">
+                    <input type="color" ng-model="newColor" placeholder="Enter new color..."> &emsp;
+                    {{getColorNameByHex(newColor)}}
                 </td>
             </tr>
             <tr>
